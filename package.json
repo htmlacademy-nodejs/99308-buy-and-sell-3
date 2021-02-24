@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nzvyagin/99308-buy-and-sell-3#readme",
   "devDependencies": {
-    "eslint": "7.20.0"
+    "eslint": "7.20.0",
+    "eslint-config-htmlacademy": "0.6.0"
   }
 }
