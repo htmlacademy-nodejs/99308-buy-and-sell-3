@@ -40,7 +40,7 @@ const OfferType = {
 
 const SumRestrict = {
   MIN: 1000,
-  MAX: 1000000,
+  MAX: 100000,
 };
 
 const PictureRestrict = {
