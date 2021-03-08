@@ -48,4 +48,4 @@ const PictureRestrict = {
   MAX: 16,
 };
 
-module.exports = {CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict};
+module.exports = {DEFAULT_COUNT, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict};
