@@ -38,7 +38,14 @@ const OfferType = {
   SALE: `sale`,
 };
 
-const sumRestrict = {
+const SumRestrict = {
   MIN: 1000,
   MAX: 1000000,
 };
+
+const PictureRestrict = {
+  MIN: 1,
+  MAX: 16,
+};
+
+module.exports = {CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict};
