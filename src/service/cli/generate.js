@@ -28,6 +28,7 @@ module.exports = {
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
         console.error(`Can't write data to file...`);
+        process.exit(ExitCode.ERROR);
       }
       console.info(`Operation success. File created.`);
     });
