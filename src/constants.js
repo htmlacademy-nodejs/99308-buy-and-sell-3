@@ -2,6 +2,7 @@
 
 const DEFAULT_COUNT = 1;
 const FILE_NAME = `mocks.json`;
+const USER_ARGV_INDEX = 2;
 
 const TITLES = [
   `Продам книги Стивена Кинга`,
@@ -48,4 +49,9 @@ const PictureRestrict = {
   MAX: 16,
 };
 
-module.exports = {DEFAULT_COUNT, FILE_NAME, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict};
+const ExitCode = {
+  SUCCESS: 0,
+  ERROR: 1
+};
+
+module.exports = {DEFAULT_COUNT, FILE_NAME, USER_ARGV_INDEX, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict, ExitCode};
