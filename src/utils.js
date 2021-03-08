@@ -13,3 +13,7 @@ exports.shuffle = (someArray) => {
   }
   return someArray;
 };
+
+exports.getPictureFileName = (number) => {
+  return `item${number.toString().padStart(2, 0)}.jpg`;
+};
