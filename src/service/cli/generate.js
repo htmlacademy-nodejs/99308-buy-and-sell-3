@@ -51,7 +51,6 @@ module.exports = {
         process.exit(ExitCode.ERROR);
       }
       console.info(`Operation success. File created.`);
-      process.exit(ExitCode.SUCCESS);
     });
   }
 };
