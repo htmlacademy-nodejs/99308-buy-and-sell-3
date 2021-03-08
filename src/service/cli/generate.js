@@ -1,6 +1,6 @@
 'use strict';
 
-const {CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict} = require(`../../constants`);
+const {DEFAULT_COUNT, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict} = require(`../../constants`);
 const {getRandomInt, shuffle, getPictureFileName} = require(`../../utils`);
 
 const generateOffers = (count) => (
@@ -16,7 +16,9 @@ const generateOffers = (count) => (
 
 module.exports = {
   name: `--generate`,
-  run() {
-
+  run(args) {
+    const [count] = args;
+    const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
+    const content = JSON.stringify(generateOffers(countOffer));
   }
 };
