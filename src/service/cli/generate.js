@@ -1,7 +1,8 @@
 'use strict';
 
-const {DEFAULT_COUNT, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict} = require(`../../constants`);
+const {FILE_NAME, DEFAULT_COUNT, CATEGORIES, SENTENCES, TITLES, OfferType, SumRestrict, PictureRestrict} = require(`../../constants`);
 const {getRandomInt, shuffle, getPictureFileName} = require(`../../utils`);
+const fs = require(`fs`);
 
 const generateOffers = (count) => (
   Array(count).fill({}).map(() => ({
@@ -20,5 +21,11 @@ module.exports = {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(generateOffers(countOffer));
+    fs.writeFile(FILE_NAME, content, (err) => {
+      if (err) {
+        console.error(`Can't write data to file...`);
+      }
+      console.info(`Operation success. File created.`);
+    });
   }
 };
