@@ -13,7 +13,12 @@ const {
   ExitCode
 } = require(`../../constants`);
 
-const {getRandomInt, shuffle, getPictureFileName} = require(`../../utils`);
+const {
+  getRandomInt,
+  shuffle,
+  getPictureFileName,
+  getRandomItem
+} = require(`../../utils`);
 
 const fs = require(`fs`);
 
@@ -26,11 +31,7 @@ const generateOffers = (count) => (
         PictureRestrict.MAX
     )),
     title: TITLES[getRandomInt(0, TITLES.length - 1)],
-    type: OfferType[
-      Object.keys(OfferType)[
-        Math.floor(Math.random() * Object.keys(OfferType).length)
-      ]
-    ],
+    type: getRandomItem(Object.values(OfferType)),
     sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX)
   }))
 );
