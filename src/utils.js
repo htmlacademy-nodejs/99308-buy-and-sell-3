@@ -18,4 +18,8 @@ const getPictureFileName = (number) => {
   return `item${number.toString().padStart(2, 0)}.jpg`;
 };
 
-module.exports = {getRandomInt, shuffle, getPictureFileName};
+const getRandomItem = (someArray) => {
+  return someArray[Math.ceil(Math.random() * someArray.length - 1)];
+};
+
+module.exports = {getRandomInt, shuffle, getPictureFileName, getRandomItem};
