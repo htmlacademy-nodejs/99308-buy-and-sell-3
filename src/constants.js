@@ -3,7 +3,7 @@
 const DEFAULT_COUNT = 1;
 const DEFAULT_COMMAND = `--help`;
 const MAX_OFFERS = 1000;
-const FILE_NAME = `../../mocks.json`;
+const FILE_NAME = `mocks.json`;
 const USER_ARGV_INDEX = 2;
 
 const TITLES = [
