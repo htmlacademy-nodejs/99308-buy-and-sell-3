@@ -21,6 +21,7 @@ const {
 } = require(`../../utils`);
 
 const fs = require(`fs`);
+const chalk = require(`chalk`);
 
 const generateOffers = (count) => (
   Array(count).fill({}).map(() => ({
@@ -42,16 +43,16 @@ module.exports = {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     if (countOffer > MAX_OFFERS) {
-      console.log(`Не больше ${MAX_OFFERS} объявлений!`);
+      console.error(chalk.red(`Не больше ${MAX_OFFERS} объявлений!`));
       process.exit(ExitCode.ERROR);
     }
     const content = JSON.stringify(generateOffers(countOffer));
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
-        console.error(`Can't write data to file...`);
+        console.error(chalk.red(`Can't write data to file...`));
         process.exit(ExitCode.ERROR);
       }
-      console.info(`Operation success. File created.`);
+      console.info(chalk.green(`Operation success. File created.`));
     });
   }
 };
