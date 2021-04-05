@@ -6,9 +6,9 @@ const MAX_OFFERS = 1000;
 const FILE_NAME = `mocks.json`;
 const USER_ARGV_INDEX = 2;
 
-const CATEGORIES_FILE_PATH = `../../data/categories.txt`;
-const SENTENCES_FILE_PATH = `../../data/sentences.txt`;
-const TITLES_FILE_PATH = `../../data/titles.txt`;
+const CATEGORIES_FILE_PATH = `./data/categories.txt`;
+const SENTENCES_FILE_PATH = `./data/sentences.txt`;
+const TITLES_FILE_PATH = `./data/titles.txt`;
 
 const OfferType = {
   OFFER: `offer`,
