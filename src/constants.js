@@ -30,4 +30,9 @@ const ExitCode = {
   ERROR: 1
 };
 
-module.exports = {DEFAULT_COUNT, DEFAULT_COMMAND, MAX_OFFERS, FILE_NAME, USER_ARGV_INDEX, CATEGORIES_FILE_PATH, SENTENCES_FILE_PATH, TITLES_FILE_PATH, OfferType, SumRestrict, PictureRestrict, ExitCode};
+const HttpCode = {
+  OK: 200,
+  NOT_FOUND: 404
+};
+
+module.exports = {DEFAULT_COUNT, DEFAULT_COMMAND, MAX_OFFERS, FILE_NAME, USER_ARGV_INDEX, CATEGORIES_FILE_PATH, SENTENCES_FILE_PATH, TITLES_FILE_PATH, OfferType, SumRestrict, PictureRestrict, ExitCode, HttpCode};
