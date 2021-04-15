@@ -49,13 +49,13 @@ module.exports = {
     const port = Number.parseInt(customPort, 10) || DEFAULT_PORT;
     http.createServer(onClientConnect)
       .listen(port)
-      .on(`listening`, (err) => {
-        if (err) {
-          return console.error(chalk.red(`Create server error`, err));
-        }
+      .on(`listening`, () => {
         return console.info(
             chalk.green(`Server listening at http://localhost:${port}`)
         );
+      })
+      .on(`error`, (err) => {
+        return console.error(chalk.red(`Create server error`, err));
       });
   }
 };
