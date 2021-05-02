@@ -12,6 +12,9 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 
+app.set(`views`, path.resolve(__dirname, `templates`));
+app.set(`view_engine`, `pug`);
+
 app.use(`/`, mainRouter);
 app.use(`/my`, myRouter);
 app.use(`/offers`, offersRouter);
