@@ -12,10 +12,12 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 
-app.set(`views`, path.resolve(__dirname, `templates`));
-app.set(`view_engine`, `pug`);
-
 app.use(`/`, mainRouter);
 app.use(`/my`, myRouter);
 app.use(`/offers`, offersRouter);
+app.use((req, res) => res.status(`404`).render(`errors/404`));
+
+app.set(`views`, path.resolve(__dirname, `templates`));
+app.set(`view engine`, `pug`);
+
 app.listen(DEFAULT_PORT);
