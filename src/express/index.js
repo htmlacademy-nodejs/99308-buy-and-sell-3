@@ -15,6 +15,7 @@ app.use(express.static(path.resolve(__dirname, PUBLIC_DIR)));
 app.use(`/`, mainRouter);
 app.use(`/my`, myRouter);
 app.use(`/offers`, offersRouter);
+app.use((err, req, res, _next) => res.status(`500`).render(`errors/500`));
 app.use((req, res) => res.status(`404`).render(`errors/404`));
 
 app.set(`views`, path.resolve(__dirname, `templates`));
