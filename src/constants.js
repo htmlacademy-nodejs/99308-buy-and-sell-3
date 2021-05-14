@@ -32,7 +32,8 @@ const ExitCode = {
 
 const HttpCode = {
   OK: 200,
-  NOT_FOUND: 404
+  NOT_FOUND: 404,
+  INTERNAL_SERVER_ERROR: 500
 };
 
 module.exports = {DEFAULT_COUNT, DEFAULT_COMMAND, MAX_OFFERS, FILE_NAME, USER_ARGV_INDEX, CATEGORIES_FILE_PATH, SENTENCES_FILE_PATH, TITLES_FILE_PATH, OfferType, SumRestrict, PictureRestrict, ExitCode, HttpCode};
