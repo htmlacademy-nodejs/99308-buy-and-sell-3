@@ -10,7 +10,8 @@ const {
   OfferType,
   SumRestrict,
   PictureRestrict,
-  ExitCode
+  ExitCode,
+  MAX_ID_LENGTH
 } = require(`../../constants`);
 
 const {
@@ -22,6 +23,7 @@ const {
 
 const fs = require(`fs`).promises;
 const chalk = require(`chalk`);
+const {nanoid} = require(`nanoid`);
 
 const readContent = async (filePath) => {
   try {
@@ -35,6 +37,7 @@ const readContent = async (filePath) => {
 
 const generateOffers = (count, categories, sentences, titles) => (
   Array(count).fill({}).map(() => ({
+    id: nanoid(MAX_ID_LENGTH),
     category: shuffle(categories).slice(0, getRandomInt(1, 2)),
     description: shuffle(sentences).slice(1, 5).join(` `),
     picture: getPictureFileName(getRandomInt(
