@@ -4,9 +4,11 @@ const {
   FILE_NAME,
   DEFAULT_COUNT,
   MAX_OFFERS,
+  MAX_COMMENTS,
   CATEGORIES_FILE_PATH,
   SENTENCES_FILE_PATH,
   TITLES_FILE_PATH,
+  FILE_COMMENTS_PATH,
   OfferType,
   SumRestrict,
   PictureRestrict,
@@ -35,7 +37,14 @@ const readContent = async (filePath) => {
   }
 };
 
-const generateOffers = (count, categories, sentences, titles) => (
+const generateComments = (count, comments) => (
+  Array(count).fill({}).map(() => ({
+    id: nanoid(MAX_ID_LENGTH),
+    text: shuffle(comments).slice(0, getRandomInt(1, 3)).join(` `)
+  }))
+);
+
+const generateOffers = (count, categories, sentences, titles, comments) => (
   Array(count).fill({}).map(() => ({
     id: nanoid(MAX_ID_LENGTH),
     category: shuffle(categories).slice(0, getRandomInt(1, 2)),
@@ -46,7 +55,8 @@ const generateOffers = (count, categories, sentences, titles) => (
     )),
     title: titles[getRandomInt(0, titles.length - 1)],
     type: getRandomItem(Object.values(OfferType)),
-    sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX)
+    sum: getRandomInt(SumRestrict.MIN, SumRestrict.MAX),
+    comments: generateComments(getRandomInt(1, MAX_COMMENTS), comments)
   }))
 );
 
@@ -56,13 +66,14 @@ module.exports = {
     const categories = await readContent(CATEGORIES_FILE_PATH);
     const sentences = await readContent(SENTENCES_FILE_PATH);
     const titles = await readContent(TITLES_FILE_PATH);
+    const comments = await readContent(FILE_COMMENTS_PATH);
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     if (countOffer > MAX_OFFERS) {
       console.error(chalk.red(`Не больше ${MAX_OFFERS} объявлений!`));
       process.exit(ExitCode.ERROR);
     }
-    const content = JSON.stringify(generateOffers(countOffer, categories, sentences, titles));
+    const content = JSON.stringify(generateOffers(countOffer, categories, sentences, titles, comments));
     try {
       await fs.writeFile(FILE_NAME, content);
       console.info(chalk.green(`Operation success. File created.`));
