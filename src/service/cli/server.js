@@ -19,7 +19,7 @@ offersRouter.get(`/`, async (req, res) => {
     const mocks = JSON.parse(fileContent);
     res.json(mocks);
   } catch (err) {
-    res.status(HttpCode.INTERNAL_SERVER_ERROR);
+    console.error(chalk.red(err));
     res.json([]);
   }
 });
