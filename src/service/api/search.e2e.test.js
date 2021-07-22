@@ -6,7 +6,7 @@ const request = require(`supertest`);
 const search = require(`./search`);
 const DataService = require(`../data-service/search`);
 
-const mockOffers = [
+const mockData = [
   {
     "id": `m0puTP`,
     "category": [`Животные`, `Книги`],
@@ -61,3 +61,7 @@ const mockOffers = [
     ]
   }
 ];
+
+const app = express();
+app.use(express.json());
+search(app, new DataService(mockData));
