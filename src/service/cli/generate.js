@@ -23,8 +23,10 @@ const {
   getRandomItem
 } = require(`../../utils`);
 
+const {getLogger} = require(`../lib/logger`);
+const logger = getLogger();
+
 const fs = require(`fs`).promises;
-const chalk = require(`chalk`);
 const {nanoid} = require(`nanoid`);
 
 const readContent = async (filePath) => {
@@ -32,7 +34,7 @@ const readContent = async (filePath) => {
     const content = await fs.readFile(filePath, `utf-8`);
     return content.trim().split(`\n`);
   } catch (err) {
-    console.error(chalk.red(err));
+    logger.error(err);
     return [];
   }
 };
@@ -70,15 +72,15 @@ module.exports = {
     const [count] = args;
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     if (countOffer > MAX_OFFERS) {
-      console.error(chalk.red(`Не больше ${MAX_OFFERS} объявлений!`));
+      logger.error(`Не больше ${MAX_OFFERS} объявлений!`);
       process.exit(ExitCode.ERROR);
     }
     const content = JSON.stringify(generateOffers(countOffer, categories, sentences, titles, comments));
     try {
       await fs.writeFile(FILE_NAME, content);
-      console.info(chalk.green(`Operation success. File created.`));
+      logger.info(`Operation success. File created.`);
     } catch (err) {
-      console.error(chalk.red(`Can't write data to file...`));
+      logger.error(`Can't write data to file...`);
       process.exit(ExitCode.ERROR);
     }
   }
