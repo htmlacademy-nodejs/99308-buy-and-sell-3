@@ -72,7 +72,7 @@ const createAPI = () => {
   const app = express();
   const cloneData = JSON.parse(JSON.stringify(mockData));
   app.use(express.json());
-  offer(app, new DataService(cloneData), new CommentService());
+  offer(app, new DataService(cloneData), new CommentService(cloneData));
   return app;
 };
 
