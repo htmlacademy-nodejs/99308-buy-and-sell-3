@@ -35,7 +35,11 @@ class OfferService {
   update(id, offer) {
     const oldOffer = this._offers
       .find((item) => item.id === id);
-    return Object.assign(oldOffer, offer);
+    if (oldOffer) {
+      return Object.assign(oldOffer, offer);
+    } else {
+      return false;
+    }
   }
 
 }

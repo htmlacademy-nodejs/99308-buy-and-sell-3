@@ -41,7 +41,7 @@ module.exports = (app, offerService, commentService) => {
         .send(`Not found with ${offerId}`);
     }
     return res.status(HttpCode.OK)
-      .send(`Updated`);
+      .send(updated);
   });
 
   route.delete(`/:offerId`, async (req, res) => {
